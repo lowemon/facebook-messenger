@@ -58,7 +58,7 @@ module Facebook
       # @raise BadRequestError if the request is tampered.
       #
       def receive
-        # check_integrity
+        check_integrity
         trigger(parsed_body)
       rescue BadRequestError => error
         respond_with_error(error)
