@@ -162,6 +162,13 @@ module Facebook
           # 'messaging' won't be available and it is not relevant to us.
           next unless entry['messaging'.freeze]
 
+          if entry.key?('changes')
+            entry.each do |message|
+              Facebook::Messenger::Bot.receive(message)
+            end
+          end
+
+          next if entry.key?('changes')
           # Facebook may batch several items in the 'messaging' array during
           # periods of high load.
           entry['messaging'.freeze].each do |messaging|
