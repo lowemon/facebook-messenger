@@ -59,7 +59,7 @@ module Facebook
       #
       def receive
         require 'pry';binding.pry
-        check_integrity
+        # check_integrity
         trigger(parsed_body)
       rescue BadRequestError => error
         respond_with_error(error)
@@ -160,7 +160,7 @@ module Facebook
           require 'pry';binding.pry
           # If the application has subscribed to webhooks other than Messenger,
           # 'messaging' won't be available and it is not relevant to us.
-          next unless entry['messaging'.freeze]
+          # next unless entry['messaging'.freeze]
 
           if entry.key?('changes')
             entry.each do |message|
