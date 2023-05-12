@@ -22,7 +22,6 @@ module Facebook
 
           # Return hash containing the referral information of user.
           def invoice
-            require 'pry';binding.pry
             @invoice ||= Invoice.new(
               @messaging
             )
