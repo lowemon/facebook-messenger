@@ -55,7 +55,6 @@ module Facebook
       def self.parse(payload)
         return MessageEcho.new(payload) if payload_is_echo?(payload)
         EVENTS.each do |event, klass|
-          require 'pry';binding.pry
           return klass.new(payload) if payload.key?(event)
         end
 
