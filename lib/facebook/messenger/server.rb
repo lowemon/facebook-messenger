@@ -163,9 +163,7 @@ module Facebook
           # next unless entry['messaging'.freeze]
 
           if entry.key?('changes')
-            entry.each do |message|
-              Facebook::Messenger::Bot.receive(message)
-            end
+            Facebook::Messenger::Bot.receive(entry)
           end
 
           next if entry.key?('changes')
