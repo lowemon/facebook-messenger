@@ -22,10 +22,9 @@ module Facebook
 
           # Return hash containing the referral information of user.
           def invoice
-            return if @messaging['entry'].blank?
-
+            require 'pry';binding.pry
             @invoice ||= Invoice.new(
-              @messaging['entry']&.first["changes"].first
+              @messaging
             )
           end
         end

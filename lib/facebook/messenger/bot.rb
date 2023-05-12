@@ -77,7 +77,7 @@ module Facebook
                   "#{event} is not a valid event; " \
                   "available events are #{EVENTS.join(',')}"
           end
-
+          require 'pry';binding.pry
           hooks[event] = block
         end
 

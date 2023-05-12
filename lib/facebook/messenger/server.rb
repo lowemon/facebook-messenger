@@ -59,7 +59,7 @@ module Facebook
       #
       def receive
         check_integrity
-
+        require 'pry';binding.pry
         trigger(parsed_body)
       rescue BadRequestError => error
         respond_with_error(error)
@@ -157,6 +157,7 @@ module Facebook
         # Facebook may batch several items in the 'entry' array during
         # periods of high load.
         events['entry'.freeze].each do |entry|
+          require 'pry';binding.pry
           # If the application has subscribed to webhooks other than Messenger,
           # 'messaging' won't be available and it is not relevant to us.
           next unless entry['messaging'.freeze]
