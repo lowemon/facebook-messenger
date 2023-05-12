@@ -77,7 +77,6 @@ module Facebook
                   "#{event} is not a valid event; " \
                   "available events are #{EVENTS.join(',')}"
           end
-          require 'pry';binding.pry
           hooks[event] = block
         end
 
@@ -90,6 +89,7 @@ module Facebook
         # @return pass event and object of callback class to trigger function.
         #
         def receive(payload)
+          require 'pry';binding.pry
           callback = Facebook::Messenger::Incoming.parse(payload)
           event = Facebook::Messenger::Incoming::EVENTS.invert[callback.class]
           trigger(event.to_sym, callback)
@@ -103,6 +103,7 @@ module Facebook
         # @param [String] event A String describing a Messenger event.
         # @param [Object] args Arguments to pass to the hook.
         def trigger(event, *args)
+          require 'pry';binding.pry
           hooks.fetch(event).call(*args)
         rescue KeyError
           warn "Ignoring #{event} (no hook registered)"
