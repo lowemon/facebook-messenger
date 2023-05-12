@@ -163,7 +163,7 @@ module Facebook
           # next unless entry['messaging'.freeze]
 
           if entry.key?('changes')
-            Facebook::Messenger::Bot.receive(entry)
+            Facebook::Messenger::Bot.receive(entry.merge(invoice: true))
           end
 
           next if entry.key?('changes')
