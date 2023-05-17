@@ -11,7 +11,7 @@ require 'facebook/messenger/incoming/referral'
 require 'facebook/messenger/incoming/payment'
 require 'facebook/messenger/incoming/policy_enforcement'
 require 'facebook/messenger/incoming/pass_thread_control'
-
+require 'facebook/messenger/incoming/invoice'
 module Facebook
   module Messenger
     #
@@ -33,7 +33,8 @@ module Facebook
         'message_request' => MessageRequest,
         'payment' => Payment,
         'policy_enforcement' => PolicyEnforcement,
-        'pass_thread_control' => PassThreadControl
+        'pass_thread_control' => PassThreadControl,
+        'invoice' => Invoice
       }.freeze
 
       # Parse the given payload and create new object of class related
